@@ -1,0 +1,18 @@
+﻿
+@*@using Restaurant.Models*@
+@model IEnumerable<FlightFinder.Services.FlightDetails>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Price)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.InboundDetails)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OutboundDetails)
+        </td>
+
+    </tr>
+}

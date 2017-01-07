@@ -1,0 +1,47 @@
+﻿
+
+
+@model string
+@{
+    ViewBag.Title = "Index";
+    AjaxOptions options = new AjaxOptions
+    {
+        UpdateTargetId = "searchResult",
+        Confirm = "Are you sure to start search?",
+        InsertionMode = InsertionMode.Replace,
+        LoadingElementId = "divLoading"
+    };
+}
+<script src="~/Scripts/jquery.unobtrusive-ajax.min.js"></script>
+<h2>Index</h2>
+<table>
+    <thead>
+        <tr>
+            <th>
+                Price
+            </th>
+            <th>
+                Inbound Details
+            </th>
+            <th>
+                Outbound Details
+            </th>
+        </tr>
+    </thead>
+    <tbody id="searchResult">
+        @*@Html.Action("SearchPeople","FlightFinder", new { keyword = "" })*@
+
+    </tbody>
+</table>
+@using (Ajax.BeginForm("SearchPeople", options))
+{
+    <div id="divLoading" style="color:red;width:200px;background-color:yellow;font-size:larger;display:none;position:absolute;">Loading ....</div>
+    <div>
+        @Html.TextBox("keyword")
+        <button type="submit">Search</button>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
